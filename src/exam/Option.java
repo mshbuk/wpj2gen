@@ -23,10 +23,27 @@ public class Option<T> {
         Option object = new Option(null);
     }
 
-    public Option get() throws EmptyOptionException {
-        if isEmpty == true {
-            throw EmptyOptionException;
+    public <T> Object get() {
+        if (isEmpty == true) {
+            System.out.println("EmptyOptionException");
+        } else {
+            return value;
         }
-        return value;
+    }
+
+    public T getORDefault(T defaultValue) {
+        if (isEmpty == true) {
+            return defaultValue;
+        } else {
+            return value;
+        }
+    }
+
+    public boolean isNone() {
+        if(isEmpty == true){
+            return true;
+        } else {
+            return false;
+        }
     }
 }
