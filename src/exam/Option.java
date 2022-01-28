@@ -6,7 +6,7 @@ public class Option<T> {
     private boolean isEmpty;
 
     private Option(T value) {
-        isEmpty = true;
+        isEmpty = false;
         this.value = value;
     }
 
@@ -20,7 +20,7 @@ public class Option<T> {
     }
 
     public static Option none() {
-        Option object = new Option<>(null);
+        Option object = new Option<>();
         return object;
     }
 

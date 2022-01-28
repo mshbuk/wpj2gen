@@ -1,8 +1,8 @@
 package exam;
 
+import java.util.stream.Stream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class ListDictionary<K, V> implements Dictionary<K,V> {
     private List<K> keys;
@@ -15,7 +15,8 @@ public class ListDictionary<K, V> implements Dictionary<K,V> {
 
     @Override
     public Option<V> get(K key) {
-        int i;
+        int i = 0;
+
         i = keys.indexOf(key);
 
         if(i != -1) {
@@ -25,7 +26,8 @@ public class ListDictionary<K, V> implements Dictionary<K,V> {
 
     @Override
     public V get(K key, V defaultValue) {
-        int i;
+        int i = 0;
+
         i = keys.indexOf(key);
 
         if(i != -1) {
@@ -40,7 +42,8 @@ public class ListDictionary<K, V> implements Dictionary<K,V> {
 
     @Override
     public boolean put(K key, V value) {
-        int i;
+        int i = 0;
+
         i = keys.indexOf(key);
 
         if(i != -1) {
@@ -55,7 +58,8 @@ public class ListDictionary<K, V> implements Dictionary<K,V> {
 
     @Override
     public boolean update(K key, V value) {
-        int i;
+        int i = 0;
+
         i = keys.indexOf(key);
 
         if(i != -1) {
@@ -67,7 +71,8 @@ public class ListDictionary<K, V> implements Dictionary<K,V> {
 
     @Override
     public void clear(K key) {
-        int i;
+        int i = 0;
+
         i = keys.indexOf(key);
 
         if(i != -1) {
