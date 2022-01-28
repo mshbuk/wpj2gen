@@ -23,12 +23,13 @@ public class Option<T> {
         Option object = new Option(null);
     }
 
-    public <T> Object get() {
+    Exception EmptyOptionException;
+
+    public <T> Object get() throws Exception {
         if (isEmpty == true) {
-            System.out.println("EmptyOptionException");
-        } else {
-            return value;
+            throw EmptyOptionException;
         }
+        return value;
     }
 
     public T getORDefault(T defaultValue) {
