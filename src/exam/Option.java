@@ -14,37 +14,33 @@ public class Option<T> {
         isEmpty = true;
     }
 
-    static <T> Object some(T value) {
-        Option object = new Option(value);
+    public static <T> Option some(T value) {
+        Option object = new Option<>(value);
         return object;
     }
 
-    static <T> void none() {
-        Option object = new Option(null);
+    public static Option none() {
+        Option object = new Option<>(null);
+        return object;
     }
 
-    Exception EmptyOptionException;
+    EmptyOptionException e = new EmptyOptionException();
 
-    public <T> Object get() throws Exception {
+    public <T> Object get() throws RuntimeException {
         if (isEmpty == true) {
-            throw EmptyOptionException;
-        }
-        return value;
+            throw e;
+        } else return value;
     }
 
     public T getORDefault(T defaultValue) {
         if (isEmpty == true) {
             return defaultValue;
-        } else {
-            return value;
-        }
+        } else return value;
     }
 
     public boolean isNone() {
         if(isEmpty == true){
             return true;
-        } else {
-            return false;
-        }
+        } else return false;
     }
 }

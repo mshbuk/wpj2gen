@@ -1,49 +1,88 @@
 package exam;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class ListDictionary<K, V> implements Dictionary {
-    List<K> keys;
-    List<V> values;
+public class ListDictionary<K, V> implements Dictionary<K,V> {
+    private List<K> keys;
+    private List<V> values;
 
-    @Override
-    public Option get(Object key) {
-        return null;
+    public ListDictionary() {
+       keys = new ArrayList<>();
+       values = new ArrayList<>();
     }
 
     @Override
-    public Object get(Object key, Object defaultValue) {
-        return null;
+    public Option<V> get(K key) {
+        int i;
+        i = keys.indexOf(key);
+
+        if(i != -1) {
+          return Option.some(values.get(i));
+        } else return Option.none();
     }
 
     @Override
-    public boolean containsKey(Object key) {
-        return false;
+    public V get(K key, V defaultValue) {
+        int i;
+        i = keys.indexOf(key);
+
+        if(i != -1) {
+            return values.get(i);
+        } else return defaultValue;
     }
 
     @Override
-    public boolean put(Object key, Object value) {
-        return false;
+    public boolean containsKey(K key) {
+        return keys.indexOf(key) != 1;
     }
 
     @Override
-    public boolean update(Object key, Object value) {
-        return false;
+    public boolean put(K key, V value) {
+        int i;
+        i = keys.indexOf(key);
+
+        if(i != -1) {
+            values.set(i, value);
+            return false;
+        } else {
+            keys.add(key);
+            values.add(value);
+            return true;
+        }
     }
 
     @Override
-    public void clear(Object key) {
+    public boolean update(K key, V value) {
+        int i;
+        i = keys.indexOf(key);
+
+        if(i != -1) {
+            values.set(i, value);
+            return true;
+        } else return false;
 
     }
 
     @Override
-    public Stream keyStream() {
-        return null;
+    public void clear(K key) {
+        int i;
+        i = keys.indexOf(key);
+
+        if(i != -1) {
+            keys.remove(i);
+            values.remove(i);
+        }
     }
 
     @Override
-    public Stream valueStream() {
-        return null;
+    public Stream<K> keyStream() {
+        return keys.stream();
+    }
+
+    @Override
+    public Stream<V> valueStream() {
+        return values.stream();
     }
 }

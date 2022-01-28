@@ -2,45 +2,45 @@ package exam;
 
 import java.util.stream.Stream;
 
-public class SetDictionary<K, V> implements Dictionary{
+public class SetDictionary<K, V> implements Dictionary<K,V> {
 
     @Override
-    public Option get(Object key) {
+    public Option<V> get(K key) {
         return null;
     }
 
     @Override
-    public Object get(Object key, Object defaultValue) {
+    public V get(K key, V defaultValue) {
         return null;
     }
 
     @Override
-    public boolean containsKey(Object key) {
+    public boolean containsKey(K key) {
         return false;
     }
 
     @Override
-    public boolean put(Object key, Object value) {
+    public boolean put(K key, V value) {
         return false;
     }
 
     @Override
-    public boolean update(Object key, Object value) {
+    public boolean update(K key, V value) {
         return false;
     }
 
     @Override
-    public void clear(Object key) {
+    public void clear(K key) {
 
     }
 
     @Override
-    public Stream keyStream() {
+    public Stream<K> keyStream() {
         return null;
     }
 
     @Override
-    public Stream valueStream() {
+    public Stream<V> valueStream() {
         return null;
     }
 }
